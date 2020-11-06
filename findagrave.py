@@ -17,7 +17,7 @@ def main():
 
         if not os.path.isfile("confirmed_dead.csv"):
             f = open("confirmed_dead.csv", "w")
-            f.write("First Name, Last Name, Birth Year, Matches (here onward)\n")
+            f.write("First Name, Last Name, Birth Year, Birth_Month, Zip_Code, Matches (here onward)\n")
         else:
             f = open("confirmed_dead.csv", "a")
         # print(first_name, last_name, birth_year, people)
@@ -33,7 +33,7 @@ def main():
 
             if re:
                 if michigan.is_registered(re):    
-                    f.write(f"{first_name},{last_name},{birth_year}," + matches + "\n")
+                    f.write(f"{first_name},{last_name},{birth_year},{mo},{zip_code}," + matches + "\n")
                     break
 
     os.chdir(os.path.abspath(os.path.dirname(__file__)))
