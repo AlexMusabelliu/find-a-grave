@@ -4,12 +4,13 @@ import os, sys
 import signal
 import time
 from bs4 import BeautifulSoup
+from votecheck import michigan
 
 def main():
     global cur_point, original_signal
     def save(people):
-        # print(os.getcwd(), os.path.normpath(r"d:\Python Programs\dead_voters\output"))
-        if os.getcwd() != os.path.normpath(r"d:\Python Programs\dead_voters\output"):
+        print(os.getcwd(), os.path.normpath(os.path.join(os.path.abspath(os.path.dirname(__file__)), "output")))
+        if os.getcwd() != os.path.normpath(os.path.join(os.path.abspath(os.path.dirname(__file__)), "output")):
             if not os.path.isdir("output"):
                 os.mkdir("output")
             os.chdir("output")
@@ -20,9 +21,20 @@ def main():
         else:
             f = open("confirmed_dead.csv", "a")
         # print(first_name, last_name, birth_year, people)
+        # print(people)
         matches = ", ".join([p["href"] for p in people[:-1]]) + str(people[-1]["href"])
         # print(matches)
-        f.write(f"{first_name},{last_name},{birth_year}," + matches + "\n")
+        for i in range(12):
+            mo = {0:"January", 1:"February", 2:"March", 3:"April", 
+                4:"June", 5:"July", 6:"August", 7:"September", 
+                8:"May", 9:"October", 10:"November", 11:"December"}
+
+            re = michigan.get_reg_status(first_name, last_name, mo[i], birth_year, zip_code)
+
+            if re:
+                if michigan.is_registered(re):    
+                    f.write(f"{first_name},{last_name},{birth_year}," + matches + "\n")
+                    break
 
     os.chdir(os.path.abspath(os.path.dirname(__file__)))
 
@@ -54,6 +66,7 @@ def main():
         first_name = row[1]
         last_name = row[2]
         birth_year = row[3]
+        zip_code = row[4]
 
         result = requests.get(f"https://www.findagrave.com/memorial/search?"\
             f"firstname={first_name}"\
