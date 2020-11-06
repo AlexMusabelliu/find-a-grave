@@ -5,7 +5,7 @@ You then need to install 3 dependencies, listed in requirements.txt
 To get those, go to the CMD in windows (search + "CMD") (if you're on MAC and don't know how to use the command line there, I'm sorry, I don't know either)
 then type the following:
 
-cd [path name of where you installed this, e.g. C:\User\Downloads\find-a-grave-master]
+cd [path name of where you installed this, e.g. C:\User\Downloads\find-a-grave-main]
 pip install requirements.txt
 
 #Usage
