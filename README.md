@@ -21,3 +21,10 @@ if you've run the program before, a log is created at `log[date].txt`, where you
 ouput is located in a folder that is created once you run this program, `output/confirmed_dead.csv`. In the CSV are the people who had returned matches from searching the person's name on findagrave.com.
 
 if you run the program again, it will append to this file, even if you run it from the very start again, so if you want to replace this file **DELETE IT FIRST** then run the program again.
+
+# Credit
+now uses the MI method from https://github.com/BenWirus/ZombieVoters
+
+## Updates
+
+Now will check the MI website to see if the person IS a registered voter.
