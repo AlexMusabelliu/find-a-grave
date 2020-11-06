@@ -22,9 +22,5 @@ ouput is located in a folder that is created once you run this program, `output/
 
 if you run the program again, it will append to this file, even if you run it from the very start again, so if you want to replace this file **DELETE IT FIRST** then run the program again.
 
-# Credit
-now uses the MI method from https://github.com/BenWirus/ZombieVoters
-
-## Updates
-
-Now will check the MI website to see if the person IS a registered voter.
+# Notice
+this is a custom version of the main branch and operates under the assumption that the list you're giving it is confirmed as voting. if that's not the case, use the main branch, not this one.
